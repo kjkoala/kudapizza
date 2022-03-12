@@ -1,0 +1,4 @@
+.wrapper {
+  width: var(--desktop-width);
+  margin: 30px auto 60px;
+}

@@ -1,0 +1,37 @@
+
+.doughtc {
+  border: 1px solid var(--outline-color);
+  border-radius: 6px;
+  display: flex;
+  height: 44px;
+  flex-shrink: 0;
+}
+
+.dough {
+  appearance: none;
+  position: relative;
+  flex-grow: 1;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.dough:before {
+  content: attr(value);
+  font-size: var(--ore-size);
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.dough:checked {
+  background: var(--primary-color-button);
+}
+
+.dough:checked:before {
+  color: white;
+}

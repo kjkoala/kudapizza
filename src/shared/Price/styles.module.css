@@ -1,0 +1,14 @@
+.total {
+  align-self: center;
+  color: #FF7010;
+  font-weight: bold;
+  font-size: var(--medium-size);
+}
+
+.medium {
+  font-size: var(--title-medium-size);
+}
+
+.total:after {
+  content: ' ₽';
+}

@@ -1,0 +1,37 @@
+.button {
+    display: flex;
+    cursor: pointer;
+    text-align: center;
+    align-items: center;
+}
+
+.small {
+    font-size: 1em;
+}
+
+.medium {
+    font-size: var(--ore-size);
+}
+
+.large {
+    font-size: var(--medium-size);
+}
+
+.templateOrange {
+    background: var(--primary-color-button);
+    color: white;
+    padding: 10px 16px;
+    border-radius: 4px;
+    gap: 10px;
+}
+
+.templateWhite {
+    background: white;
+    gap: 5px;
+}
+
+.border {
+    border: 1px solid var(--outline-color);
+    padding: 8px 16px;
+    border-radius: 6px;
+}

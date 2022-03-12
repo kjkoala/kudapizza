@@ -1,0 +1,100 @@
+.wrapper {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  width: 420px;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color:white;
+  z-index: 100;
+  padding: 12px 20px;
+  gap: 20px;
+}
+
+.top {
+  display: flex;
+  align-items: center;
+}
+
+.title {
+  color: var(--text-general);
+  font-size: var(--large-size);
+  flex-grow: 1;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  overflow-y: auto;
+  padding: 0 1rem 0 0 ;
+
+  scrollbar-width: thin;
+  scrollbar-gutter: stable;
+}
+
+.list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.list::-webkit-scrollbar-track {
+  background-color: gainsboro;
+}
+
+.list::-webkit-scrollbar-thumb {
+  background-color: #969696;
+}
+
+.item {
+  display: flex;
+  overflow: hidden;
+  padding: 1rem;
+  border:1px solid #F0F0F0;
+  border-radius: 12px;
+  gap: 16px;
+  flex-shrink: 0;
+}
+
+.image img{
+  width: 94px;
+  height: 94px;
+}
+
+.name {
+  font-weight: bold;
+  font-size: var(--medium-size);
+}
+
+.detail {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.price {
+  font-size: var(--medium-size);
+  color: #FF7010;
+  font-weight: bold;
+  align-self: center;
+}
+
+.price:after {
+  content: ' ₽';
+}
+
+.detail {
+  flex-grow: 1;
+}
+
+.order {
+  display: flex;
+  justify-content: space-between;
+  margin-top: auto;
+}
+
+.bottom {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+}
