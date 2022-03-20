@@ -9,6 +9,10 @@
   font-size: var(--title-medium-size);
 }
 
+.small {
+  font-size: 1rem;
+}
+
 .total:after {
   content: ' ₽';
 }

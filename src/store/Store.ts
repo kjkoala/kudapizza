@@ -21,10 +21,12 @@ export const setPopup = () => {
   setStore('popups', 'list', (l) => {
     if(l.has('popupOrder')) {
       l.delete('popupOrder');
-      document.querySelector('#root')!.classList.remove('openPopup')
+      document.querySelector('#root')!.classList.remove('openPopup');
+      document.body.classList.remove('hidden')
     } else {
       l.add('popupOrder');
       document.querySelector('#root')!.classList.add('openPopup')
+      document.body.classList.add('hidden')
     }
     return new Set(l);
   })

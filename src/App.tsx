@@ -8,11 +8,12 @@ import { Resource } from './api/Resource/Resource';
 import { Popup } from './components/Popup/Popup';
 import { MajorPopup } from './components/MajorPopup/MajorPopup';
 
-const App: Component = () => {
+import PopupOrder from './components/Popup/OrderPopup/OrderPopup'
 
+const App: Component = () => {
   return (
     <>
-      <MajorPopup />
+      {/* <MajorPopup /> */}
       <Header />
       <div className={styles.wrapper}>
         <NavCategories />
@@ -25,7 +26,9 @@ const App: Component = () => {
         <Resource title='Соусы' href='sauce' />
         <Resource title='Комбо' href='combo' />
       </div>
-      <Popup />
+      <Popup title='Ваш заказ'>
+        <PopupOrder />
+      </Popup>
     </>
   );
 };

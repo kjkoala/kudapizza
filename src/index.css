@@ -16,6 +16,7 @@
   --outline-color: #F0F0F0;
   --primary-color-button: #FF7010;
   --desktop-width: min(1274px, 100%);
+  --remove-color: #A5A5A5;
 
   --popup-overlay: hsla(0, 0%, 10%, 0.400);
 }
@@ -38,18 +39,11 @@ body {
     -moz-osx-font-smoothing: grayscale;
     background: #F9F9F9;
 }
+.hidden {
+  overflow: hidden;
+}
 
 #root.openPopup {
   filter: blur(6px);
-}
-
-#root.openPopup:before {
-  content: '';
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  background: var(--popup-overlay);
-  z-index: 11;
+  overflow: scroll;
 }

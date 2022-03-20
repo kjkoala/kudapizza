@@ -1,0 +1,11 @@
+.composition {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .subtitle {
+    font-size: var(--ore-size);
+    font-weight: bold;
+    flex-basis: 100%;
+  }

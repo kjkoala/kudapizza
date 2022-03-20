@@ -1,6 +1,9 @@
+import { children } from 'solid-js'
 import { Button } from '../../shared/Button/Button'
 import styles from './styles.module.css'
-export const BarItems = ({ children, title }) => {
+export const BarItems = (props) => {
+  const { title } = props;
+  const itemChildren = children(() => props.children)
   return (
     <div>
       <div className={styles.top}>
@@ -10,7 +13,7 @@ export const BarItems = ({ children, title }) => {
           <Button.Text>Фильтр</Button.Text>
         </Button>
       </div>
-      <div className={styles.wrapper}>{children}</div>
+      <div className={styles.wrapper}>{itemChildren()}</div>
     </div>
   )
 }
