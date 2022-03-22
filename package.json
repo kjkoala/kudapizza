@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "vite build",
     "server": "json-server -p 8000 -d 450 -s ./src/assets/ ./src/db.json",
-    "serve": "vite preview"
+    "serve": "vite preview",
+    "prettier": "npx prettier --write ./src/"
   },
   "license": "MIT",
   "devDependencies": {
