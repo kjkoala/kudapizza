@@ -17,7 +17,7 @@ export const Resource: Component<{ [k in Props]: string }> = ({
   href,
 }) => {
   const [data] = createResource<Pizza[]>(async () => {
-    return await (await fetch(`http://localhost:8000/${href}`)).json();
+    return await (await fetch(`/api/${href}`)).json();
   });
 
   return (

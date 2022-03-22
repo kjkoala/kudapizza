@@ -7,5 +7,16 @@ export default defineConfig({
     target: "esnext",
     polyfillDynamicImport: false,
   },
+  server: {
+    strictPort: true,
+    host: true,
+    open: true,
+    proxy: {
+      '/api/': {
+        target: 'http://localhost:8000/',
+        rewrite: (path) => path.replace(/^\/api/, ''),
+      }
+    }
+  },
   publicDir: "src/assets",
 });
