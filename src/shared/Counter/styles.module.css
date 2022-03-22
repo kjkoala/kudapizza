@@ -1,6 +1,6 @@
 .wrapper {
   display: flex;
-  background-color: #FFEEE2;
+  background-color: #ffeee2;
   width: 92px;
   height: 36px;
   border-radius: 6px;
@@ -11,13 +11,13 @@
   height: 100%;
   margin: auto;
   text-align: center;
-  color: #FF7010;
+  color: #ff7010;
   font-weight: bold;
 }
 
 .button {
   flex-basis: 26px;
-  color: #FF7010;
+  color: #ff7010;
   font-weight: bold;
   cursor: pointer;
 }

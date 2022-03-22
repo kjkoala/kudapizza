@@ -1,0 +1,23 @@
+.wrapper {
+  position: fixed;
+  display: flex;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: var(--popup-overlay);
+  padding: 20px;
+  z-index: 100;
+}
+
+.body {
+  background: white;
+  margin: auto;
+  border-radius: 24px;
+  display: flex;
+  overflow: hidden;
+  padding: 32px 20px 20px;
+  gap: 60px;
+  height: min(680px, 100%);
+  width: min(1070px, 100%);
+}

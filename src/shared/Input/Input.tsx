@@ -1,4 +1,4 @@
-import styles from './styles.module.css'
+import styles from "./styles.module.css";
 
 export const Input = ({ icon, placeholder }) => {
   return (
@@ -8,5 +8,5 @@ export const Input = ({ icon, placeholder }) => {
       </div>
       <input className={styles.input} placeholder={placeholder} />
     </div>
-  )
-}
+  );
+};

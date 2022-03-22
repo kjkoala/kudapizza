@@ -1,33 +1,35 @@
-import { createStore } from 'solid-js/store'
+import { createMemo } from "solid-js";
+import { createStore } from "solid-js/store";
 
 const initialStore = {
   cart: [],
-  price: 0,
-  popups: {
-    list: new Set(),
-    get getPopupIsShow() {
-      return this.list.has('popupOrder');
-    },
+  get price() {
+    return price();
   },
-}
+  popups: new Set<string>(),
+};
 
 export const [store, setStore] = createStore(initialStore);
 
-export const addToCart = (price: number) => {
- setStore('price', p => p + price);
-}
+const price = createMemo(() =>
+  store.cart.reduce((prev, { price }) => prev + price, 0)
+);
 
-export const setPopup = () => {
-  setStore('popups', 'list', (l) => {
-    if(l.has('popupOrder')) {
-      l.delete('popupOrder');
-      document.querySelector('#root')!.classList.remove('openPopup');
-      document.body.classList.remove('hidden')
+export const addToCart = (product) => {
+  setStore("cart", (cart) => [...cart, product]);
+};
+
+export const setPopup = (namePopup: string) => {
+  setStore("popups", (popups) => {
+    if (popups.has(namePopup)) {
+      popups.delete(namePopup);
+      document.querySelector("#root")!.classList.remove("openPopup");
+      document.body.classList.remove("hidden");
     } else {
-      l.add('popupOrder');
-      document.querySelector('#root')!.classList.add('openPopup')
-      document.body.classList.add('hidden')
+      popups.add(namePopup);
+      document.querySelector("#root")!.classList.add("openPopup");
+      document.body.classList.add("hidden");
     }
-    return new Set(l);
-  })
-}
+    return new Set(popups);
+  });
+};

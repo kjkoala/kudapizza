@@ -10,17 +10,21 @@ interface Pizza {
   readonly price: number;
 }
 
-type Props = 'title' | 'href';
+type Props = "title" | "href";
 
-export const Resource: Component<{ [k in Props]: string }> = ({ title, href }) => {
+export const Resource: Component<{ [k in Props]: string }> = ({
+  title,
+  href,
+}) => {
   const [data] = createResource<Pizza[]>(async () => {
     return await (await fetch(`http://localhost:8000/${href}`)).json();
- });
+  });
 
-    return (
+  return (
     <BarItems title={title}>
       <For each={data()} fallback={<div>LOADING</div>}>
         {(item) => <Item {...item} />}
       </For>
-    </BarItems>)
-}
+    </BarItems>
+  );
+};

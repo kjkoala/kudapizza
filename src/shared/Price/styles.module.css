@@ -1,6 +1,6 @@
 .total {
   align-self: center;
-  color: #FF7010;
+  color: #ff7010;
   font-weight: bold;
   font-size: var(--medium-size);
 }
@@ -14,5 +14,5 @@
 }
 
 .total:after {
-  content: ' ₽';
+  content: " ₽";
 }
