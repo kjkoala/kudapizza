@@ -14,7 +14,7 @@ interface Props {
   id: number;
 }
 
-export const Item: Component<Props> = ({ title, recipe, src, price }) => {
+export const Item: Component<Props> = ({ title, recipe, src, price, id }) => {
   return (
     <div className={styles.wrapper} onClick={[setPopup, "ProductPopup"]}>
       <img src={src} />

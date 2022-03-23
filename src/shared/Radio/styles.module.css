@@ -8,10 +8,12 @@
 
 .dough {
   appearance: none;
+  -webkit-appearance: none;
   position: relative;
   flex-grow: 1;
   border-radius: 6px;
   cursor: pointer;
+  height: 100%;
 }
 
 .dough:before {
