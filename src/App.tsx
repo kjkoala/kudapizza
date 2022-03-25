@@ -15,7 +15,7 @@ const App: Component = () => {
   return (
     <>
       <BigPopup namePopup="ProductPopup">
-        <MajorPopup />
+        {(props) => <MajorPopup {...props} />}
       </BigPopup>
       <Header />
       <div className={styles.wrapper}>

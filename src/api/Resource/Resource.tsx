@@ -23,7 +23,7 @@ export const Resource: Component<{ [k in Props]: string }> = ({
   return (
     <BarItems title={title}>
       <For each={data()} fallback={<div>LOADING</div>}>
-        {(item) => <Item {...item} />}
+        {(item) => <Item {...item} href={href} />}
       </For>
     </BarItems>
   );

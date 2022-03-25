@@ -1,11 +1,12 @@
 import { createMemo } from "solid-js";
-import { createStore } from "solid-js/store";
+import { createStore, produce } from "solid-js/store";
 
 const initialStore = {
   cart: [],
   get price() {
     return price();
   },
+  productHref: null,
   popups: new Set<string>(),
 };
 
@@ -16,19 +17,21 @@ const price = createMemo(() =>
 );
 
 export const addToCart = (product) => {
-  setStore("cart", (cart) => [...cart, product]);
+  setStore("cart", produce(cart => cart.push(product)));
 };
 
 export const setPopup = (namePopup: string) => {
+  const root = document.querySelector("#root")!;
+  const { body } = document;
   setStore("popups", (popups) => {
     if (popups.has(namePopup)) {
       popups.delete(namePopup);
-      document.querySelector("#root")!.classList.remove("openPopup");
-      document.body.classList.remove("hidden");
+      root.classList.remove("openPopup");
+      body.classList.remove("hidden");
     } else {
       popups.add(namePopup);
-      document.querySelector("#root")!.classList.add("openPopup");
-      document.body.classList.add("hidden");
+      root.classList.add("openPopup");
+      body.classList.add("hidden");
     }
     return new Set(popups);
   });

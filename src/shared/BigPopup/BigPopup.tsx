@@ -5,16 +5,21 @@ import { store, setPopup } from "../../store/Store";
 
 import styles from "./styles.module.css";
 
-export const BigPopup: Component<{ namePopup: string }> = ({
-  children,
-  namePopup,
-}) => {
+
+export const BigPopup: Component<{ namePopup: string, children: Component<{onClose: { kek: Function }}> }> = ({ namePopup, children: Component }) => {
+  // @TODO: Подумать как лучше прокидывать пропс в компонент
+  const sks = {
+    kek: () => {}
+  }
   return (
     <Show when={store.popups.has(namePopup)}>
       <Portal mount={document.body}>
-        <div className={styles.wrapper} onClick={[setPopup, namePopup]}>
+        <div className={styles.wrapper} onClick={() => {
+          setPopup(namePopup)
+          sks.kek()
+        }}>
           <div className={styles.body} onClick={[stopPropagation, this]}>
-            {children}
+            <Component onClose={sks} />
           </div>
         </div>
       </Portal>

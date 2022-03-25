@@ -52,8 +52,13 @@ const addToCartProduct = (
   };
 };
 
-export const MajorPopup = () => {
+export const MajorPopup = ({ onClose }) => {
   const [cost, setCost] = createSignal({});
+
+  // @TODO: Подумать над тем как лучше тут сделать
+    onClose.kek = () => {
+      history.back()
+    }
 
   const finalPrice = createMemo(() => {
     const kek = cost();
@@ -74,7 +79,6 @@ export const MajorPopup = () => {
       addToCartProduct(IngridientsItem, { ...cost(), price: finalPrice() })
     );
     setPopup("ProductPopup");
-    console.log(store.cart);
   };
   return (
     <>
