@@ -12,6 +12,7 @@ import PopupOrder from "./components/Popup/OrderPopup/OrderPopup";
 import { BigPopup } from "./shared/BigPopup/BigPopup";
 
 const App: Component = () => {
+  1
   return (
     <>
       <BigPopup namePopup="ProductPopup">
