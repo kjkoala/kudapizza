@@ -17,7 +17,10 @@ const price = createMemo(() =>
 );
 
 export const addToCart = (product) => {
-  setStore("cart", produce(cart => cart.push(product)));
+  setStore(
+    "cart",
+    produce((cart) => cart.push(product))
+  );
 };
 
 export const setPopup = (namePopup: string) => {

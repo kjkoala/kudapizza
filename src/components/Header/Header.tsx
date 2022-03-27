@@ -2,6 +2,8 @@ import { Button, Size } from "../../shared/Button/Button";
 
 import { store, setPopup } from "../../store/Store";
 
+import cn from 'classnames';
+
 import styles from "./styles.module.css";
 
 export const Header = () => {
@@ -29,7 +31,7 @@ export const Header = () => {
           </div>
         </div>
       </div>
-      <div className={styles.body}>
+      <div className={cn(styles.body, styles.sticky)}>
         <div className={styles.wrapper}>
           <a className={styles.logotype} href="/">
             <img src="/logotype.svg" />
