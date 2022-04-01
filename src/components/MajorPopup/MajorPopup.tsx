@@ -59,12 +59,11 @@ export const MajorPopup = ({ onClose }) => {
     history.back();
   };
 
-  const data = ItemData({ pathname: location.pathname })
-
+  const data = ItemData({ pathname: location.pathname });
 
   const finalPrice = createMemo(() => {
     let price = data()?.price;
-    if(price) {
+    if (price) {
       const kek = cost();
       for (let k in kek) {
         if (Array.isArray(kek[k])) {
@@ -73,50 +72,69 @@ export const MajorPopup = ({ onClose }) => {
             price
           );
         }
-    }
-    return Math.ceil(price * (kek.size?.multiplication ?? 1));
+      }
+      return Math.ceil(price * (kek.size?.multiplication ?? 1));
     }
   });
 
   const addToCartHandler = () => {
     addToCart(
-      addToCartProduct(IngridientsItem, { ...cost(), ...data(), price: finalPrice() })
+      addToCartProduct(IngridientsItem, {
+        ...cost(),
+        ...data(),
+        price: finalPrice(),
+      })
     );
     setPopup("ProductPopup");
     onClose.kek();
   };
   return (
     <>
-    <Show when={!data()}>
-      <img src="/loading.svg" className={styles.loading} />
-    </Show>
-    <Show when={data()}>
-      {(data) => (<><div className={styles.image}>
-        <img src={data.src} />
-      </div><div className={styles.console}>
-          <div className={styles.title}>{data.title}</div>
-          <Ingridients
-            account="remove"
-            title="Убрать из пиццы:"
-            tag="head"
-            onChange={setCost}
-            items={IngridientsItem.ingridients.major} />
-          <Radio items={IngridientsItem.dough} name="dough" onChange={setCost} />
-          <Radio items={IngridientsItem.sizes} name="size" onChange={setCost} />
-          <Ingridients
-            title="Добавить в пиццу:"
-            account="add"
-            tag="bottom"
-            onChange={setCost}
-            items={IngridientsItem.ingridients.optional} />
-          <div className={styles.bottom}>
-            <Price>Итого: {finalPrice()}</Price>
-            <Button template="orange" onClick={addToCartHandler}>
-              <Button.Text size={Size.MEDIUM}>Добавить</Button.Text>
-            </Button>
-          </div>
-        </div></>)}
-    </Show>
+      <Show when={!data()}>
+        <img src="/loading.svg" className={styles.loading} />
+      </Show>
+      <Show when={data()}>
+        {(data) => (
+          <>
+            <div className={styles.image}>
+              <img src={data.src} />
+            </div>
+            <div className={styles.console}>
+              <div className={styles.title}>{data.title}</div>
+              <Ingridients
+                account="remove"
+                title="Убрать из пиццы:"
+                tag="head"
+                onChange={setCost}
+                items={IngridientsItem.ingridients.major}
+              />
+              <Radio
+                items={IngridientsItem.dough}
+                name="dough"
+                onChange={setCost}
+              />
+              <Radio
+                items={IngridientsItem.sizes}
+                name="size"
+                onChange={setCost}
+              />
+              <Ingridients
+                title="Добавить в пиццу:"
+                account="add"
+                tag="bottom"
+                onChange={setCost}
+                items={IngridientsItem.ingridients.optional}
+              />
+              <div className={styles.bottom}>
+                <Price>Итого: {finalPrice()}</Price>
+                <Button template="orange" onClick={addToCartHandler}>
+                  <Button.Text size={Size.MEDIUM}>Добавить</Button.Text>
+                </Button>
+              </div>
+            </div>
+          </>
+        )}
+      </Show>
     </>
   );
 };

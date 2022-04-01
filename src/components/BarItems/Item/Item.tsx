@@ -16,6 +16,7 @@ interface Props {
 }
 
 const historyPopup = ({ href, id }: { href: string; id: number }) => {
+  history.pushState(null, "", `/`);
   history.pushState({ product: href, id }, "", `${href}/${id}`);
   setPopup("ProductPopup");
 };

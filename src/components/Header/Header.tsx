@@ -2,7 +2,7 @@ import { Button, Size } from "../../shared/Button/Button";
 
 import { store, setPopup } from "../../store/Store";
 
-import cn from 'classnames';
+import cn from "classnames";
 
 import styles from "./styles.module.css";
 
