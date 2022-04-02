@@ -1,4 +1,4 @@
-import { createMemo, createSignal, Show } from "solid-js";
+import { createEffect, createMemo, createSignal, Show } from "solid-js";
 import { Ingridients } from "./Ingridients";
 import { Radio } from "../../shared/Radio/Readio";
 import { Price } from "../../shared/Price/Price";
@@ -7,35 +7,6 @@ import { Button, Size } from "../../shared/Button/Button";
 import styles from "./MajorPopup.module.css";
 import { addToCart, setPopup } from "../../store/Store";
 import { ItemData } from "../../api/ItemData";
-
-const IngridientsItem = {
-  labels: "ХИТ!",
-  type: "pizza",
-  price: 379,
-  ingridients: {
-    major: [
-      { id: 1, name: "Моцарелла", src: "/mozarella.svg" },
-      { id: 2, name: "Огурцы маринованные", src: "/pickle.svg" },
-      { id: 3, name: "Пепперони", src: "/pepperony.svg" },
-      { id: 4, name: "Томатный соус", src: "/tomat_sauce.svg" },
-    ],
-    optional: [
-      { id: 1, name: "Моцарелла", src: "/mozarella.svg", price: 59 },
-      { id: 2, name: "Шампиньоны", src: "/mashrooms.svg", price: 59 },
-      { id: 3, name: "Красный лук", src: "/onion.svg", price: 59 },
-      { id: 4, name: "Сладкий перец", src: "/pepper.svg", price: 59 },
-    ],
-  },
-  dough: [
-    { id: 1, value: "Традиционное" },
-    { id: 2, value: "Тонкое" },
-  ],
-  sizes: [
-    { id: 1, value: "20 см" },
-    { id: 2, value: "28 см", multiplication: 1.2 },
-    { id: 3, value: "33 см", multiplication: 1.6 },
-  ],
-};
 
 const addToCartProduct = (
   { title, src, price, dough, sizes },
@@ -52,14 +23,18 @@ const addToCartProduct = (
 };
 
 export const MajorPopup = ({ onClose }) => {
+  const [data] = ItemData()
+
+  createEffect(() => {
+    console.log(data())
+  })
+return
   const [cost, setCost] = createSignal({});
 
   // @TODO: Подумать над тем как лучше тут сделать
   onClose.kek = () => {
     history.back();
   };
-
-  const data = ItemData({ pathname: location.pathname });
 
   const finalPrice = createMemo(() => {
     let price = data()?.price;
@@ -79,9 +54,8 @@ export const MajorPopup = ({ onClose }) => {
 
   const addToCartHandler = () => {
     addToCart(
-      addToCartProduct(IngridientsItem, {
+      addToCartProduct(data(), {
         ...cost(),
-        ...data(),
         price: finalPrice(),
       })
     );
@@ -90,7 +64,7 @@ export const MajorPopup = ({ onClose }) => {
   };
   return (
     <>
-      <Show when={!data()}>
+      <Show when={data.loading}>
         <img src="/loading.svg" className={styles.loading} />
       </Show>
       <Show when={data()}>
@@ -106,15 +80,15 @@ export const MajorPopup = ({ onClose }) => {
                 title="Убрать из пиццы:"
                 tag="head"
                 onChange={setCost}
-                items={IngridientsItem.ingridients.major}
+                items={data.ingridients.major}
               />
               <Radio
-                items={IngridientsItem.dough}
+                items={data.dough}
                 name="dough"
                 onChange={setCost}
               />
               <Radio
-                items={IngridientsItem.sizes}
+                items={data.sizes}
                 name="size"
                 onChange={setCost}
               />
@@ -123,7 +97,7 @@ export const MajorPopup = ({ onClose }) => {
                 account="add"
                 tag="bottom"
                 onChange={setCost}
-                items={IngridientsItem.ingridients.optional}
+                items={data.ingridients.optional}
               />
               <div className={styles.bottom}>
                 <Price>Итого: {finalPrice()}</Price>

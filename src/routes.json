@@ -1,1 +1,3 @@
-{}
+{
+    "/:ingridient/:id/full": "/full/$1$2"
+}

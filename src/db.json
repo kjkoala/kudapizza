@@ -5,7 +5,8 @@
       "title": "Чикен Сладкий Чили",
       "recipe": "Курица, Лук, Перец Халапеньо, Сыр Моцарелла, Томатный соус",
       "price": 359,
-      "src": "/recipe/pizza1.jpg"
+      "src": "/recipe/pizza1.jpg",
+      "labels": "ХИТ!"
     },
     {
       "id": 2,
@@ -403,6 +404,38 @@
       "recipe": "Курица, Лук, Перец Халапеньо, Сыр Моцарелла, Томатный соус",
       "price": 733,
       "src": "/recipe/combo1.jpg"
+    }
+  ],
+  "full": [
+    {
+      "id": "pizza1",
+      "title": "Чикен Сладкий Чили",
+      "recipe": "Курица, Лук, Перец Халапеньо, Сыр Моцарелла, Томатный соус",
+      "price": 359,
+      "src": "/recipe/pizza1.jpg",
+      "ingridients": {
+        "major": [
+          { "id": 1, "name": "Моцарелла", "src": "/mozarella.svg" },
+          { "id": 2, "name": "Огурцы маринованные", "src": "/pickle.svg" },
+          { "id": 3, "name": "Пепперони", "src": "/pepperony.svg" },
+          { "id": 4, "name": "Томатный соус", "src": "/tomat_sauce.svg" }
+        ],
+        "optional": [
+          { "id": 1, "name": "Моцарелла", "src": "/mozarella.svg", "price": 59 },
+          { "id": 2, "name": "Шампиньоны", "src": "/mashrooms.svg", "price": 59 },
+          { "id": 3, "name": "Красный лук", "src": "/onion.svg", "price": 59 },
+          { "id": 4, "name": "Сладкий перец", "src": "/pepper.svg", "price": 59 }
+        ]
+      },
+      "dough": [
+        { "id": 1, "value": "Традиционное" },
+        { "id": 2, "value": "Тонкое" }
+      ],
+      "sizes": [
+        { "id": 1, "value": "20 см" },
+        { "id": 2, "value": "28 см", "multiplication": 1.2 },
+        { "id": 3, "value": "33 см", "multiplication": 1.6 }
+      ]
     }
   ]
 }
